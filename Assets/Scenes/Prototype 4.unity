@@ -693,7 +693,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4085730f0c31cee428b26235873c7223, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpawnManager
-  enemyPrefab: {fileID: 0}
+  enemyPrefab: {fileID: 7454182603794379341, guid: 80eba98cab6b7a84691c8ed2f3f29324, type: 3}
 --- !u!4 &1375536508
 Transform:
   m_ObjectHideFlags: 0
