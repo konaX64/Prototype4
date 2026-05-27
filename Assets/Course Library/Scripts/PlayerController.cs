@@ -30,9 +30,9 @@ public class PlayerController : MonoBehaviour
         if (other.CompareTag("Powerup"))
         {
             hasPowerup = true;
+            powerupIndicator.gameObject.SetActive(true);
             Destroy(other.gameObject);
             StartCoroutine(PowerupCountdownRoutine());
-            powerupIndicator.gameObject.SetActive(true);
         }
     }
 
@@ -48,9 +48,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.CompareTag("Enemy") && hasPowerup)
         {
             Rigidbody enemyRigidbody = collision.gameObject.GetComponent<Rigidbody>();
-            Vector3 awayFromPlayer = (collision.gameObject.transform.position - transform.position);
-            Debug.Log("Collided with " + collision.gameObject.name + " with powerup set to " + hasPowerup);
+            Vector3 awayFromPlayer = collision.gameObject.transform.position - transform.position;
+
             enemyRigidbody.AddForce(awayFromPlayer * powerupStrength, ForceMode.Impulse);
+            Debug.Log("Collided with " + collision.gameObject.name + " with powerup set to " + hasPowerup);
         }
     }
 }
