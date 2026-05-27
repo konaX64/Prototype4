@@ -3,7 +3,7 @@ using UnityEngine;
 public class SpawnManager : MonoBehaviour
 {
     public GameObject enemyPrefab;
-    private float spawnRange = 8.0f;
+    private float spawnRange = 9.0f;
     public int enemyCount;
     public int waveNumber = 1;
     public GameObject powerupPrefab;
@@ -18,11 +18,14 @@ public class SpawnManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length == 0)
+        enemyCount = GameObject.FindGameObjectsWithTag("Enemy").Length;
+
+        if (enemyCount == 0)
         {
             waveNumber++;
             SpawnEnemyWave(waveNumber);
-            Instantiate(powerupPrefab, GenerateSpawnPosition(), powerupPrefab.transform.rotation);
+            Instantiate(powerupPrefab, GenerateSpawnPosition(),
+                powerupPrefab.transform.rotation);
         }
     }
 
@@ -36,9 +39,21 @@ public class SpawnManager : MonoBehaviour
 
     private Vector3 GenerateSpawnPosition()
     {
-        float spawnPosX = Random.Range(spawnRange, spawnRange);
-        float spawnPosZ = Random.Range(spawnRange, spawnRange);
-        Vector3 randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
+        Vector3 randomPos;
+        float distanceFromPlayer;
+
+        do
+        {
+            float spawnPosX = Random.Range(-spawnRange, spawnRange);
+            float spawnPosZ = Random.Range(-spawnRange, spawnRange);
+
+            randomPos = new Vector3(spawnPosX, 0, spawnPosZ);
+
+            distanceFromPlayer = Vector3.Distance(randomPos,
+                GameObject.Find("Player").transform.position);
+
+        } while (distanceFromPlayer < 4f);
+
         return randomPos;
     }
 }
