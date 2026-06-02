@@ -272,7 +272,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ed61346e733102489dc0cd5fc81f504, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  speed: 4
+  speed: 3
   hasPowerup: 0
   powerupIndicator: {fileID: 548418938}
 --- !u!1001 &245963551
@@ -728,7 +728,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3023713b465d2cb4c96aef402e791955, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::RotateCamera
-  rotationSpeed: 70
+  rotationSpeed: 65
 --- !u!4 &1262340218
 Transform:
   m_ObjectHideFlags: 0
